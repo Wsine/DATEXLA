@@ -23,7 +23,7 @@ read -p "Please plugin the Ethernets network cards and press enter..."
 brctl addbr br0
 brctl addif br0 $eths
 
-# configurate network interfaces
+# configure network interfaces
 ethsArray=($eths)
 ethsNum=${#ethsArray[@]}
 ifaceEths=""
@@ -49,7 +49,7 @@ iface br0 inet static
 auto wlan0
 EOT
 
-# configurate dnsmasq
+# configure dnsmasq
 cat <<EOT > /etc/dnsmasq.conf
 # Never forward plain names (without a dot or domain part)
 domain-needed
@@ -71,7 +71,7 @@ EOT
 # enable ip forward
 sysctl -w net.ipv4.ip_forward=1
 
-# configurate br0 with nat network
+# configure br0 with nat network
 iptables -t nat -A POSTROUTING -o br0 -j MASQUERADE
 iptables -A FORWARD -i br0 -o wlan0 -m state --state RELATED,ESTABLISHED -j ACCEPT
 iptables -A FORWARD -i wlan0 -o br0 -j ACCEPT
