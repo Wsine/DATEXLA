@@ -119,6 +119,8 @@ EOT
 
 # enable ip forward
 sysctl -w net.ipv4.ip_forward=1
+# enable arp proxy
+sysctl -w net.ipv4.conf.eth0.proxy_arp=1
 
 # configure nat network
 iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE  
