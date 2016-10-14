@@ -3,18 +3,12 @@
 source tor.config
 
 # check whether package is installed
+apt-get update
 packages="hostapd dnsmasq"
 packagesArray=($packages)
 packagesNum=${#packagesArray[@]}
 for ((i=0; i<packagesNum; i++)) do
-	echo "check for ${packagesArray[$i]} installation status"
-	isInstall=$(dpkg -l ${packagesArray[$i]} | grep ${packagesArray[$i]})
-	if [ -n "$isInstall" ]; then
-		echo -e "\t${packagesArray[$i]} was installed."
-	else
-		echo -e "\t${packagesArray[$i]} was not installed. trying to install it..."
-		apt-get install ${packagesArray[$i]}
-	fi
+	apt-get install ${packagesArray[$i]}
 done
 
 # tell dhcpcd ignore wlan0
@@ -46,6 +40,7 @@ iface wlan1 inet manual
 EOT
 
 # configure hostapd
+mkdir -p /etc/hostapd/
 cat <<EOT > /etc/hostapd/hostapd.conf
 # This is the name of the WiFi interface we configured above
 interface=wlan0
@@ -96,7 +91,7 @@ EOT
 # tell hostapd where to look for the config file
 hasConfigHostapd=$(grep "^DAEMON_CONF" /etc/default/hostapd)
 if [ ! -n "$hasConfigHostapd" ]; then
-	sed -i 's/#DAEMON_CONF=""/DAEMON_CONF="/etc/hostapd/hostapd.conf"' /etc/default/hostapd
+	sed -i 's/#DAEMON_CONF=\"\"/DAEMON_CONF=\"\/etc\/hostapd\/hostapd.conf"/' /etc/default/hostapd
 fi
 
 # configure dnsmasq
