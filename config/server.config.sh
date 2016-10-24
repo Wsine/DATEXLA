@@ -47,6 +47,11 @@ iface br0 inet static
     broadcast $server_br0_broadcast
 
 auto wlan0
+
+# static route
+up route add -net $tor1_network mask $tor_network_mask br0
+up route add -net $tor2_network mask $tor_network_mask br0
+up route add -net $tor3_network mask $tor_network_mask br0
 EOT
 
 # configure dnsmasq
