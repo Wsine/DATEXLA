@@ -113,14 +113,20 @@ dhcp-range=$tor_dhcp_range
 EOT
 
 # enable ip forward
-sysctl -w net.ipv4.ip_forward=1
+hasEnableIpForward=$(grep "^net.ipv4.ip_forward=1" /etc/sysctl.conf)
+if [ ! -n "$hasEnableIpForward" ]; then
+	sed -i 's/#net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/' /etc/sysctl.conf
+fi
 # enable arp proxy
-sysctl -w net.ipv4.conf.eth0.proxy_arp=1
+hasEnableProxyArp=$(grep "net.ipv4.conf.eth0.proxy_arp=1" /etc/sysctl.conf)
+if [ ! -n "$hasEnableProxyArp" ]; then
+	echo "net.ipv4.conf.eth0.proxy_arp=1" >> /etc/sysctl.conf
+fi
 
 # configure nat network
-iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE  
-iptables -A FORWARD -i eth0 -o wlan0 -m state --state RELATED,ESTABLISHED -j ACCEPT  
-iptables -A FORWARD -i wlan0 -o eth0 -j ACCEPT  
+iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+iptables -A FORWARD -i eth0 -o wlan0 -m state --state RELATED,ESTABLISHED -j ACCEPT
+iptables -A FORWARD -i wlan0 -o eth0 -j ACCEPT
 
 echo "wait for 5 seconds..."
 sleep 5

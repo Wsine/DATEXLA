@@ -74,7 +74,10 @@ dhcp-range=$server_dhcp_range
 EOT
 
 # enable ip forward
-sysctl -w net.ipv4.ip_forward=1
+hasEnableIpForward=$(grep "^net.ipv4.ip_forward=1" /etc/sysctl.conf)
+if [ ! -n "$hasEnableIpForward" ]; then
+	sed -i 's/#net.ipv4.ip_forward=1/net.ipv4.ip_forward=1/' /etc/sysctl.conf
+fi
 
 # configure br0 with nat network
 iptables -t nat -A POSTROUTING -o br0 -j MASQUERADE
