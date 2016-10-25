@@ -8,7 +8,14 @@ packages="hostapd dnsmasq"
 packagesArray=($packages)
 packagesNum=${#packagesArray[@]}
 for ((i=0; i<packagesNum; i++)) do
-	apt-get install ${packagesArray[$i]}
+	echo "check for ${packagesArray[$i]} installation status"
+	PKG_OK=$(dpkg-query -W --showformat='${Status}\n' ${packagesArray[$i]} | grep "install ok installed")
+	if [ -n "$PKG_OK" ]; then
+		echo -e "\t${packagesArray[$i]} was installed."
+	else
+		echo -e "\t${packagesArray[$i]} was not installed. trying to install it..."
+		apt-get --force-yes --yes install ${packagesArray[$i]}
+	fi
 done
 
 # tell dhcpcd ignore wlan0

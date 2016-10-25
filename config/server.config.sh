@@ -9,12 +9,12 @@ packagesArray=($packages)
 packagesNum=${#packagesArray[@]}
 for ((i=0; i<packagesNum; i++)) do
 	echo "check for ${packagesArray[$i]} installation status"
-	isInstall=$(dpkg -l ${packagesArray[$i]} | grep ${packagesArray[$i]})
-	if [ -n "$isInstall" ]; then
+	PKG_OK=$(dpkg-query -W --showformat='${Status}\n' ${packagesArray[$i]} | grep "install ok installed")
+	if [ -n "$PKG_OK" ]; then
 		echo -e "\t${packagesArray[$i]} was installed."
 	else
 		echo -e "\t${packagesArray[$i]} was not installed. trying to install it..."
-		apt-get install ${packagesArray[$i]}
+		apt-get --force-yes --yes install ${packagesArray[$i]}
 	fi
 done
 
