@@ -3,6 +3,7 @@
 
 from flask import Flask, json
 from flaskext.mysql import MySQL
+import itertools
 
 mysql = MySQL()
 app = Flask(__name__)
