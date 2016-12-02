@@ -45,13 +45,12 @@ iface br0 inet static
     netmask $server_br0_netmask
     network $server_br0_network
     broadcast $server_br0_broadcast
+	# static route
+    post-up route add -net $tor1_network netmask $tor_network_mask
+    post-up route add -net $tor2_network netmask $tor_network_mask
+    post-up route add -net $tor3_network netmask $tor_network_mask
 
 auto wlan0
-
-# static route
-up route add -net $tor1_network mask $tor_network_mask br0
-up route add -net $tor2_network mask $tor_network_mask br0
-up route add -net $tor3_network mask $tor_network_mask br0
 EOT
 
 # configure dnsmasq
