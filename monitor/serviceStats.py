@@ -29,7 +29,7 @@ def getNodes(ip):
 	return nodeIDMap
 
 def getTask(ip, serviceName):
-	url = "http://" + ip + ":4243/tasks?name=" + serviceName
+	url = "http://" + ip + ":4243/tasks?filters={\"service\":[\"" + serviceName + "\"]}"
 	response = urllib.urlopen(url)
 	tasks = json.loads(response.read())
 	taskList = []
@@ -46,7 +46,7 @@ def getTask(ip, serviceName):
 	return taskList
 
 def printStats(taskList, nodeIDMap):
-	print "taskID nodeName cpu mem"
+	print "taskID nodeName cpu mem rx tx blkRead blkWrite"
 	for task in taskList:
 		if task["State"] != "running":
 			print task["TaskID"], nodeIDMap[task["NodeID"]]["HostName"], "--", "--"
@@ -58,9 +58,44 @@ def printStats(taskList, nodeIDMap):
 		url = "http://" + ip + ":4243/containers/" + containerID + "/stats?stream=0"
 		response = urllib.urlopen(url)
 		stat = json.loads(response.read())
-		cpu = stat["cpu_stats"]["cpu_usage"]["total_usage"]
-		mem = stat["memory_stats"]["usage"]
-		print task["TaskID"], nodeIDMap[task["NodeID"]]["HostName"], cpu, mem
+		cpu = calcCPUPer(stat["precpu_stats"]["cpu_usage"]["total_usage"],
+			stat["precpu_stats"]["system_cpu_usage"],
+			stat["cpu_stats"]["cpu_usage"]["total_usage"],
+			stat["cpu_stats"]["system_cpu_usage"],
+			len(stat["cpu_stats"]["cpu_usage"]["percpu_usage"]))
+		mem = calcMemPer(stat["memory_stats"]["usage"],stat["memory_stats"]["limit"])
+		rx , tx = calcNetwork(stat["networks"])
+		blkRead , blkWrite = calcBlockIO(stat["blkio_stats"]["io_service_bytes_recursive"])
+		print task["TaskID"], nodeIDMap[task["NodeID"]]["HostName"], cpu, mem , rx , tx
+
+def calcMemPer(usage,limit):
+	return float(usage) / float(limit) * 100.0
+
+def calcCPUPer(preUsage,preSys,usage,sys,coreNum):
+	cpuPercent = 0.0
+	cpuDelta = float(usage) - float(preUsage)
+	sysDelta = float(sys) - float(preSys)
+	if cpuDelta > 0.0 and sysDelta > 0.0:
+		cpuPercent = (cpuDelta / sysDelta) * float(coreNum) * 100.0
+	return cpuPercent
+
+def calcNetwork(networks):
+	rx = 0.0
+	tx = 0.0
+	for i in networks:
+		rx += float(networks[i]["rx_bytes"])
+		tx += float(networks[i]["tx_bytes"])
+	return rx , tx 
+
+def calcBlockIO(blkIO):
+	blkRead = 0.0
+	blkWrite = 0.0
+	for record in blkIO:
+		if cmp(record["op"],"Read") == 0:
+			blkRead += float(record["value"])
+		elif cmp(record["op"],"Write") == 0:
+			blkWrite += float(record["value"])
+	return blkRead , blkWrite
 
 def main():
 	ip, serviceName = getInput()
