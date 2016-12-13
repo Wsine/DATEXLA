@@ -7,12 +7,13 @@ from multiprocessing import Manager
 from multiprocessing.dummy import Pool as ThreadPool
 
 
-import curses
+from prettytable import PrettyTable
+import humanfriendly
 
 def getInput():
 	# check for input
-	if len(sys.argv) != 4:
-		print "Usage:", sys.argv[0], "master_ip", "serviceName" , "stream"
+	if len(sys.argv) !=3:
+		print "Usage:", sys.argv[0], "master_ip", "serviceName" 
 		sys.exit(1)
 	ip = sys.argv[1]
 	# check valid ip
@@ -22,7 +23,7 @@ def getInput():
 		print "error: ip is invalid"
 		exit(1)
 	serviceName = sys.argv[2]
-	stream = sys.argv[3]
+	stream = 1	
 	return ip, serviceName,stream
 
 def getNodes(ip):
@@ -66,7 +67,11 @@ def collect(arg):
 	statsDict = arg[4]
 	url = "http://" + ip + ":4243/containers/" + containerID + "/stats"
 	playload = {'stream': stream}
-	response = requests.get(url, params=playload,stream=bool(stream))
+	try:
+		response = requests.get(url, params=playload,stream=bool(stream))
+	except ConnectionError:
+		time.sleep(1)
+		response = requests.get(url, params=playload,stream=bool(stream))
 	
 	try:
 		for line in response.iter_lines():
@@ -78,12 +83,13 @@ def collect(arg):
 				#print 'process id:', os.getpid()
 				lock.release()
 	except:
+		response.close()
 		#raise e
 		return
 
 
 
-def collectStats(tasks,nodeIDMap,stream):
+def collectStats(serviceName,tasks,nodeIDMap,stream):
 	args = []
 	manager = Manager()
 	lock = manager.Lock()
@@ -93,39 +99,55 @@ def collectStats(tasks,nodeIDMap,stream):
 		args.append(arg)
 
 	pool = Pool(len(tasks)+1)
-	pool.apply_async(printStat,(statsDict,lock))
+	pool.apply_async(printStat,(serviceName,statsDict,lock,nodeIDMap))
 	pool.map(collect,args)
 	pool.close()
 	pool.join()
 				
 
-def printStat(statsDict,lock):
+def printStat(serviceName,statsDict,lock,nodeIDMap):
 	while True:
 		try:
 			time.sleep(0.5)
 			#print 'process id:', os.getpid()
 			os.system('clear')
-			print "name cpu mem rx tx blkRead blkWrite"
+			table = PrettyTable(["name","cpu %", "mem %", "net I/O","block I/O"])
+			table.align = "c"
+			table.sortby = "name"
+			#print "name cpu mem rx tx blkRead blkWrite"
 			lock.acquire()
 			if not statsDict:
 				#print "empty" 
+				print table
 				lock.release()
 				continue
+
 			
 			for name,stat in statsDict.items():
 				
 				if stat["precpu_stats"].get("system_cpu_usage","") == "":
 					continue
 				cpu = calcCPUPer(stat["precpu_stats"]["cpu_usage"]["total_usage"],
-							stat["precpu_stats"]["system_cpu_usage"],
-							stat["cpu_stats"]["cpu_usage"]["total_usage"],
-							stat["cpu_stats"]["system_cpu_usage"],
-							len(stat["cpu_stats"]["cpu_usage"]["percpu_usage"]))
+						stat["precpu_stats"]["system_cpu_usage"],
+						stat["cpu_stats"]["cpu_usage"]["total_usage"],
+						stat["cpu_stats"]["system_cpu_usage"],
+						len(stat["cpu_stats"]["cpu_usage"]["percpu_usage"]))
+				cpuStr = "%.2f"%(cpu)
 				mem = calcMemPer(stat["memory_stats"]["usage"],stat["memory_stats"]["limit"])
+				memStr = "%.2f"%(mem)
 				rx , tx = calcNetwork(stat["networks"])
+				netStr = "%s / %s"%(humanfriendly.format_size(rx, binary=True),
+								humanfriendly.format_size(tx, binary=True))
 				blkRead , blkWrite = calcBlockIO(stat["blkio_stats"]["io_service_bytes_recursive"])
-				print name, cpu, mem , rx , tx
+				blkStr = "%s / %s"%(humanfriendly.format_size(blkRead, binary=True),
+								humanfriendly.format_size(blkWrite, binary=True))
+
+				table.add_row([name[1:len(name)-26],cpuStr,memStr,netStr,blkStr])
+				
+				#log
+				
 			
+			print table
 			#print statsDict
 			lock.release()
 		except:
@@ -166,7 +188,7 @@ def main():
 	ip, serviceName,stream = getInput()
 	nodeIDMap = getNodes(ip)
 	tasks = getTasks(ip,serviceName)
-	collectStats(tasks,nodeIDMap,stream)
+	collectStats(serviceName,tasks,nodeIDMap,stream)
 
 
 if __name__ == '__main__':
