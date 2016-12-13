@@ -61,10 +61,11 @@ def getTasks(ip,serviceName):
 
 def collect(arg):
 	ip = arg[0]
-	containerID = arg[1]
-	stream = arg[2]
-	lock = arg[3]
-	statsDict = arg[4]
+	nodeID = arg[1]
+	containerID = arg[2]
+	stream = arg[3]
+	lock = arg[4]
+	statsDict = arg[5]
 	url = "http://" + ip + ":4243/containers/" + containerID + "/stats"
 	playload = {'stream': stream}
 	try:
@@ -78,6 +79,7 @@ def collect(arg):
 			if line:
 				stat = json.loads(line)
 				lock.acquire()
+				stat["nodeID"] = nodeID
 				statsDict[stat["name"]] = stat
 				#print 'name:',stat["name"]
 				#print 'process id:', os.getpid()
@@ -95,7 +97,7 @@ def collectStats(serviceName,tasks,nodeIDMap,stream):
 	lock = manager.Lock()
 	statsDict = manager.dict()
 	for task in tasks:
-		arg = [nodeIDMap[task.nodeID]["Ip"],task.containerID,stream,lock,statsDict]
+		arg = [nodeIDMap[task.nodeID]["Ip"],task.nodeID,task.containerID,stream,lock,statsDict]
 		args.append(arg)
 
 	pool = Pool(len(tasks)+1)
@@ -111,7 +113,7 @@ def printStat(serviceName,statsDict,lock,nodeIDMap):
 			time.sleep(0.5)
 			#print 'process id:', os.getpid()
 			os.system('clear')
-			table = PrettyTable(["name","cpu %", "mem %", "net I/O","block I/O"])
+			table = PrettyTable(["name","node","cpu %", "mem %", "net I/O","block I/O"])
 			table.align = "c"
 			table.sortby = "name"
 			#print "name cpu mem rx tx blkRead blkWrite"
@@ -122,7 +124,8 @@ def printStat(serviceName,statsDict,lock,nodeIDMap):
 				lock.release()
 				continue
 
-			
+			logg = open(serviceName,"a")
+
 			for name,stat in statsDict.items():
 				
 				if stat["precpu_stats"].get("system_cpu_usage","") == "":
@@ -142,15 +145,18 @@ def printStat(serviceName,statsDict,lock,nodeIDMap):
 				blkStr = "%s / %s"%(humanfriendly.format_size(blkRead, binary=True),
 								humanfriendly.format_size(blkWrite, binary=True))
 
-				table.add_row([name[1:len(name)-26],cpuStr,memStr,netStr,blkStr])
+
+				logStr =  "%s %s %.2f %.2f %.2f %.2f %.2f %.2f\n"%(stat["read"],name[1:len(name)-26],cpu,mem,rx,tx,blkRead,blkWrite)
+				#print logStr
+				logg.write(logStr)
+				table.add_row([name[1:len(name)-26],nodeIDMap[stat["nodeID"]]["HostName"],cpuStr,memStr,netStr,blkStr])				
 				
-				#log
-				
-			
+			logg.close()
 			print table
 			#print statsDict
 			lock.release()
 		except:
+			logg.close()
 			break
 
 
