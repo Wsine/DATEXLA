@@ -26,8 +26,8 @@ def getInput():
 	stream = 1	
 	return ip, serviceName,stream
 
-def getNodes(ip):
-	url = "http://" + ip + ":4243/nodes"
+def getNodes(mip):
+	url = "http://" + mip + ":4243/nodes"
 	response = 	requests.get(url)
 	nodes = response.json()
 	nodeIDMap = {}
@@ -35,6 +35,8 @@ def getNodes(ip):
 		nodeId = node["ID"]
 		hostName = node["Description"]["Hostname"]
 		ip = node["Status"]["Addr"]
+		if ip == "127.0.0.1":
+			ip = mip
 		nodeIDMap[nodeId] = {"Ip": ip, "HostName": hostName}
 	return nodeIDMap
 
@@ -61,7 +63,7 @@ def getTasks(ip,serviceName):
 
 def collect(arg):
 	ip = arg[0]
-	nodeID = arg[1]
+	nodeName = arg[1]
 	containerID = arg[2]
 	stream = arg[3]
 	lock = arg[4]
@@ -70,16 +72,15 @@ def collect(arg):
 	playload = {'stream': stream}
 	try:
 		response = requests.get(url, params=playload,stream=bool(stream))
-	except ConnectionError:
-		time.sleep(1)
-		response = requests.get(url, params=playload,stream=bool(stream))
+	except requests.ConnectionError as e:
+		print e
 	
 	try:
 		for line in response.iter_lines():
 			if line:
 				stat = json.loads(line)
 				lock.acquire()
-				stat["nodeID"] = nodeID
+				stat["nodeName"] = nodeName
 				statsDict[stat["name"]] = stat
 				#print 'name:',stat["name"]
 				#print 'process id:', os.getpid()
@@ -97,17 +98,16 @@ def collectStats(serviceName,tasks,nodeIDMap,stream):
 	lock = manager.Lock()
 	statsDict = manager.dict()
 	for task in tasks:
-		arg = [nodeIDMap[task.nodeID]["Ip"],task.nodeID,task.containerID,stream,lock,statsDict]
+		arg = [nodeIDMap[task.nodeID]["Ip"],nodeIDMap[task.nodeID]["HostName"],task.containerID,stream,lock,statsDict]
 		args.append(arg)
-
 	pool = Pool(len(tasks)+1)
-	pool.apply_async(printStat,(serviceName,statsDict,lock,nodeIDMap))
+	pool.apply_async(printStat,(serviceName,statsDict,lock))
 	pool.map(collect,args)
 	pool.close()
 	pool.join()
 				
 
-def printStat(serviceName,statsDict,lock,nodeIDMap):
+def printStat(serviceName,statsDict,lock):
 	while True:
 		try:
 			time.sleep(0.5)
@@ -149,7 +149,7 @@ def printStat(serviceName,statsDict,lock,nodeIDMap):
 				logStr =  "%s %s %.2f %.2f %.2f %.2f %.2f %.2f\n"%(stat["read"],name[1:len(name)-26],cpu,mem,rx,tx,blkRead,blkWrite)
 				#print logStr
 				logg.write(logStr)
-				table.add_row([name[1:len(name)-26],nodeIDMap[stat["nodeID"]]["HostName"],cpuStr,memStr,netStr,blkStr])				
+				table.add_row([name[1:len(name)-26],stat["nodeName"],cpuStr,memStr,netStr,blkStr])				
 				
 			logg.close()
 			print table
