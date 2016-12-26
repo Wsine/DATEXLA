@@ -1,0 +1,120 @@
+2016-12-22 01:19:34.157 [service  come  ] serviceId: sblhxiruf06jwcd9orzqx0bbb, taskID: hmot5ybp5ie3kaf8fgoamcoei
+2016-12-22 01:19:34.180 [Manager  Info  ] hostName: tor1 is a manager, neglecting calculating manager's score, nodeID: 1oxvor2ftq8ggscrw8l0xet55, ip: 192.168.10.10
+2016-12-22 01:19:34.226 [score    print ] hostName: slave1-3, score: 0, cpuScore: 0, memScore: 0, nodeID: yporuk0j42460j4u1gvdtl5i8, ip: 192.168.10.13
+2016-12-22 01:19:34.232 [score    print ] hostName: slave1-2, score: 0, cpuScore: 0, memScore: 0, nodeID: icp8je11sez2ba1gmv6grunl9, ip: 192.168.10.12
+2016-12-22 01:19:34.232 [score    print ] hostName: slave1-1, score: 0, cpuScore: 0, memScore: 0, nodeID: s7qm3i6feydqtjhthf3zbl4my, ip: 192.168.10.11
+2016-12-22 01:19:34.244 [schedule finish] serviceId: sblhxiruf06jwcd9orzqx0bbb, taskID: hmot5ybp5ie3kaf8fgoamcoei
+2016-12-22 01:20:20.714 [service  come  ] serviceId: op5nqpoxtluzevc1cm07xtg4c, taskID: m7824dgmkuvzvpgrq1lt3ygkm
+2016-12-22 01:20:20.738 [Manager  Info  ] hostName: tor1 is a manager, neglecting calculating manager's score, nodeID: 1oxvor2ftq8ggscrw8l0xet55, ip: 192.168.10.10
+2016-12-22 01:20:20.770 [score    print ] hostName: slave1-3, score: 0, cpuScore: 0, memScore: 0, nodeID: yporuk0j42460j4u1gvdtl5i8, ip: 192.168.10.13
+2016-12-22 01:20:20.773 [score    print ] hostName: slave1-2, score: 0, cpuScore: 0, memScore: 0, nodeID: icp8je11sez2ba1gmv6grunl9, ip: 192.168.10.12
+2016-12-22 01:20:21.911 [score    print ] hostName: slave1-1, score: 89.58683769751606, cpuScore: 84.85815454545454, memScore: 4.728683152061518, nodeID: s7qm3i6feydqtjhthf3zbl4my, ip: 192.168.10.11
+2016-12-22 01:20:21.924 [schedule finish] serviceId: op5nqpoxtluzevc1cm07xtg4c, taskID: m7824dgmkuvzvpgrq1lt3ygkm
+2016-12-22 01:21:16.947 [service  come  ] serviceId: xdcs69ivqg9qiszykrol8jntm, taskID: hrbtaufmml18m7y3sdl4cyncf
+2016-12-22 01:21:16.969 [Manager  Info  ] hostName: tor1 is a manager, neglecting calculating manager's score, nodeID: 1oxvor2ftq8ggscrw8l0xet55, ip: 192.168.10.10
+2016-12-22 01:21:16.992 [score    print ] hostName: slave1-3, score: 0, cpuScore: 0, memScore: 0, nodeID: yporuk0j42460j4u1gvdtl5i8, ip: 192.168.10.13
+2016-12-22 01:21:18.199 [score    print ] hostName: slave1-2, score: 33.68530804150492, cpuScore: 14.629187638190954, memScore: 19.05612040331396, nodeID: icp8je11sez2ba1gmv6grunl9, ip: 192.168.10.12
+2016-12-22 01:21:18.907 [score    print ] hostName: slave1-1, score: 92.83530926436732, cpuScore: 88.0914322, memScore: 4.743877064367321, nodeID: s7qm3i6feydqtjhthf3zbl4my, ip: 192.168.10.11
+2016-12-22 01:21:18.920 [schedule finish] serviceId: xdcs69ivqg9qiszykrol8jntm, taskID: hrbtaufmml18m7y3sdl4cyncf
+2016-12-22 01:22:18.011 [service  come  ] serviceId: pm8yq340p2yw3vd6hxrdry4wy, taskID: 3vn3xf48qx535mw74shh8iyky
+2016-12-22 01:22:18.034 [Manager  Info  ] hostName: tor1 is a manager, neglecting calculating manager's score, nodeID: 1oxvor2ftq8ggscrw8l0xet55, ip: 192.168.10.10
+2016-12-22 01:22:19.149 [score    print ] hostName: slave1-3, score: 42.86207801390941, cpuScore: 37.771695338345864, memScore: 5.090382675563546, nodeID: yporuk0j42460j4u1gvdtl5i8, ip: 192.168.10.13
+2016-12-22 01:22:19.189 [score    print ] hostName: slave1-2, score: 31.513388443492907, cpuScore: 12.454313668341708, memScore: 19.0590747751512, nodeID: icp8je11sez2ba1gmv6grunl9, ip: 192.168.10.12
+2016-12-22 01:22:19.906 [score    print ] hostName: slave1-1, score: 90.6774232987693, cpuScore: 85.93565650000001, memScore: 4.7417667987692935, nodeID: s7qm3i6feydqtjhthf3zbl4my, ip: 192.168.10.11
+2016-12-22 01:22:19.919 [schedule finish] serviceId: pm8yq340p2yw3vd6hxrdry4wy, taskID: 3vn3xf48qx535mw74shh8iyky
+2016-12-22 01:23:09.858 [service  come  ] serviceId: q32ecaey02nsfvdhlixjdwvxw, taskID: nwo1g5qj2tyta501yvq9gv2kp
+2016-12-22 01:23:09.881 [Manager  Info  ] hostName: tor1 is a manager, neglecting calculating manager's score, nodeID: 1oxvor2ftq8ggscrw8l0xet55, ip: 192.168.10.10
+2016-12-22 01:23:11.113 [score    print ] hostName: slave1-3, score: 41.078399647400786, cpuScore: 35.9850626, memScore: 5.0933370474007855, nodeID: yporuk0j42460j4u1gvdtl5i8, ip: 192.168.10.13
+2016-12-22 01:23:11.912 [score    print ] hostName: slave1-1, score: 90.89047373143762, cpuScore: 86.14870693266833, memScore: 4.7417667987692935, nodeID: s7qm3i6feydqtjhthf3zbl4my, ip: 192.168.10.11
+2016-12-22 01:23:13.221 [score    print ] hostName: slave1-2, score: 61.92181836000968, cpuScore: 38.223535694153355, memScore: 23.698282665856325, nodeID: icp8je11sez2ba1gmv6grunl9, ip: 192.168.10.12
+2016-12-22 01:23:13.233 [schedule finish] serviceId: q32ecaey02nsfvdhlixjdwvxw, taskID: nwo1g5qj2tyta501yvq9gv2kp
+2016-12-22 01:23:55.994 [service  come  ] serviceId: ymuayrjmt5s1l333bxf6eb4pi, taskID: n4s2fbqct4tqmlg12knzeecjn
+2016-12-22 01:23:56.019 [Manager  Info  ] hostName: tor1 is a manager, neglecting calculating manager's score, nodeID: 1oxvor2ftq8ggscrw8l0xet55, ip: 192.168.10.10
+2016-12-22 01:23:57.898 [score    print ] hostName: slave1-1, score: 90.70319989876928, cpuScore: 85.9614331, memScore: 4.7417667987692935, nodeID: s7qm3i6feydqtjhthf3zbl4my, ip: 192.168.10.11
+2016-12-22 01:23:59.116 [score    print ] hostName: slave1-3, score: 138.01059611606448, cpuScore: 121.88816694712926, memScore: 16.122429168935202, nodeID: yporuk0j42460j4u1gvdtl5i8, ip: 192.168.10.13
+2016-12-22 01:23:59.183 [score    print ] hostName: slave1-2, score: 62.05481213998568, cpuScore: 38.35652947412935, memScore: 23.698282665856325, nodeID: icp8je11sez2ba1gmv6grunl9, ip: 192.168.10.12
+2016-12-22 01:23:59.196 [schedule finish] serviceId: ymuayrjmt5s1l333bxf6eb4pi, taskID: n4s2fbqct4tqmlg12knzeecjn
+2016-12-22 01:24:51.853 [service  come  ] serviceId: vc8ylzmyjy1s34mu3ro752luk, taskID: jblmb6hj3k8cohdq3ms53438p
+2016-12-22 01:24:51.875 [Manager  Info  ] hostName: tor1 is a manager, neglecting calculating manager's score, nodeID: 1oxvor2ftq8ggscrw8l0xet55, ip: 192.168.10.10
+2016-12-22 01:24:53.900 [score    print ] hostName: slave1-1, score: 90.71492438670899, cpuScore: 85.9731575879397, memScore: 4.7417667987692935, nodeID: s7qm3i6feydqtjhthf3zbl4my, ip: 192.168.10.11
+2016-12-22 01:24:55.116 [score    print ] hostName: slave1-3, score: 142.3685066278352, cpuScore: 126.24312308706274, memScore: 16.125383540772443, nodeID: yporuk0j42460j4u1gvdtl5i8, ip: 192.168.10.13
+2016-12-22 01:24:57.183 [score    print ] hostName: slave1-2, score: 125.09867530218409, cpuScore: 96.77511249856963, memScore: 28.32356280361446, nodeID: icp8je11sez2ba1gmv6grunl9, ip: 192.168.10.12
+2016-12-22 01:24:57.216 [schedule finish] serviceId: vc8ylzmyjy1s34mu3ro752luk, taskID: jblmb6hj3k8cohdq3ms53438p
+2016-12-22 01:25:38.287 [service  come  ] serviceId: udwp8wvpi14i64oek2nnxf6uc, taskID: nymxvoyczpg8rfpttmsvblvgs
+2016-12-22 01:25:38.310 [Manager  Info  ] hostName: tor1 is a manager, neglecting calculating manager's score, nodeID: 1oxvor2ftq8ggscrw8l0xet55, ip: 192.168.10.10
+2016-12-22 01:25:41.899 [score    print ] hostName: slave1-1, score: 137.0094297763074, cpuScore: 127.61283912140757, memScore: 9.396590654899825, nodeID: s7qm3i6feydqtjhthf3zbl4my, ip: 192.168.10.11
+2016-12-22 01:25:42.153 [score    print ] hostName: slave1-3, score: 138.48058585835827, cpuScore: 122.37250649548966, memScore: 16.10807936286861, nodeID: yporuk0j42460j4u1gvdtl5i8, ip: 192.168.10.13
+2016-12-22 01:25:44.156 [score    print ] hostName: slave1-2, score: 130.15854167115728, cpuScore: 101.83497886754282, memScore: 28.32356280361446, nodeID: icp8je11sez2ba1gmv6grunl9, ip: 192.168.10.12
+2016-12-22 01:25:44.169 [schedule finish] serviceId: udwp8wvpi14i64oek2nnxf6uc, taskID: nymxvoyczpg8rfpttmsvblvgs
+2016-12-22 01:26:24.993 [service  come  ] serviceId: sv9l21xyxkgmsi7fctwiabp9a, taskID: w4ralmg2rukc9snlbhojpqk04
+2016-12-22 01:26:25.016 [Manager  Info  ] hostName: tor1 is a manager, neglecting calculating manager's score, nodeID: 1oxvor2ftq8ggscrw8l0xet55, ip: 192.168.10.10
+2016-12-22 01:26:28.110 [score    print ] hostName: slave1-3, score: 140.88857390303713, cpuScore: 124.77796222145089, memScore: 16.110611681586246, nodeID: yporuk0j42460j4u1gvdtl5i8, ip: 192.168.10.13
+2016-12-22 01:26:28.902 [score    print ] hostName: slave1-1, score: 136.3354391430144, cpuScore: 126.96839220648698, memScore: 9.367046936527432, nodeID: s7qm3i6feydqtjhthf3zbl4my, ip: 192.168.10.11
+2016-12-22 01:26:32.160 [score    print ] hostName: slave1-2, score: 159.1688980627961, cpuScore: 126.22132128078232, memScore: 32.94757678201378, nodeID: icp8je11sez2ba1gmv6grunl9, ip: 192.168.10.12
+2016-12-22 01:26:32.174 [schedule finish] serviceId: sv9l21xyxkgmsi7fctwiabp9a, taskID: w4ralmg2rukc9snlbhojpqk04
+2016-12-22 01:27:11.204 [service  come  ] serviceId: sbe8abtom4o33fpbcc47iuesi, taskID: zc4evrlny1bwmi05056lle16e
+2016-12-22 01:27:11.229 [Manager  Info  ] hostName: tor1 is a manager, neglecting calculating manager's score, nodeID: 1oxvor2ftq8ggscrw8l0xet55, ip: 192.168.10.10
+2016-12-22 01:27:15.122 [score    print ] hostName: slave1-3, score: 138.77253976938385, cpuScore: 122.66783683147207, memScore: 16.104702937911767, nodeID: yporuk0j42460j4u1gvdtl5i8, ip: 192.168.10.13
+2016-12-22 01:27:16.921 [score    print ] hostName: slave1-1, score: 202.8376585030441, cpuScore: 188.82676109149588, memScore: 14.010897411548218, nodeID: s7qm3i6feydqtjhthf3zbl4my, ip: 192.168.10.11
+2016-12-22 01:27:19.184 [score    print ] hostName: slave1-2, score: 157.47459118634313, cpuScore: 124.52701440432935, memScore: 32.94757678201378, nodeID: icp8je11sez2ba1gmv6grunl9, ip: 192.168.10.12
+2016-12-22 01:27:19.197 [schedule finish] serviceId: sbe8abtom4o33fpbcc47iuesi, taskID: zc4evrlny1bwmi05056lle16e
+2016-12-22 01:28:06.391 [service  come  ] serviceId: wg5knsb5xwllklyzzivnfga8e, taskID: vlt5919rlgwgo5662rw6y9ywa
+2016-12-22 01:28:06.414 [Manager  Info  ] hostName: tor1 is a manager, neglecting calculating manager's score, nodeID: 1oxvor2ftq8ggscrw8l0xet55, ip: 192.168.10.10
+2016-12-22 01:28:11.906 [score    print ] hostName: slave1-1, score: 199.51616771524596, cpuScore: 185.508224675535, memScore: 14.007943039710977, nodeID: s7qm3i6feydqtjhthf3zbl4my, ip: 192.168.10.11
+2016-12-22 01:28:12.128 [score    print ] hostName: slave1-3, score: 187.03627751529547, cpuScore: 166.28265946492763, memScore: 20.75361805036782, nodeID: yporuk0j42460j4u1gvdtl5i8, ip: 192.168.10.13
+2016-12-22 01:28:14.201 [score    print ] hostName: slave1-2, score: 155.56665956029525, cpuScore: 122.61908277828147, memScore: 32.94757678201378, nodeID: icp8je11sez2ba1gmv6grunl9, ip: 192.168.10.12
+2016-12-22 01:28:14.214 [schedule finish] serviceId: wg5knsb5xwllklyzzivnfga8e, taskID: vlt5919rlgwgo5662rw6y9ywa
+2016-12-22 01:28:52.574 [service  come  ] serviceId: ng9w9etn4sbt70zza7sr971l0, taskID: 0q0zc9dp3di2q091d6gd6e2w3
+2016-12-22 01:28:52.597 [Manager  Info  ] hostName: tor1 is a manager, neglecting calculating manager's score, nodeID: 1oxvor2ftq8ggscrw8l0xet55, ip: 192.168.10.10
+2016-12-22 01:28:57.919 [score    print ] hostName: slave1-1, score: 201.3231015901163, cpuScore: 187.3138923910465, memScore: 14.009209199069794, nodeID: s7qm3i6feydqtjhthf3zbl4my, ip: 192.168.10.11
+2016-12-22 01:28:58.117 [score    print ] hostName: slave1-3, score: 186.38876026592544, cpuScore: 165.64527149042814, memScore: 20.743488775497283, nodeID: yporuk0j42460j4u1gvdtl5i8, ip: 192.168.10.13
+2016-12-22 01:29:02.189 [score    print ] hostName: slave1-2, score: 192.0999168851675, cpuScore: 154.4911854502291, memScore: 37.608731434938406, nodeID: icp8je11sez2ba1gmv6grunl9, ip: 192.168.10.12
+2016-12-22 01:29:02.203 [schedule finish] serviceId: ng9w9etn4sbt70zza7sr971l0, taskID: 0q0zc9dp3di2q091d6gd6e2w3
+2016-12-22 01:29:44.184 [service  come  ] serviceId: vemqv3o2l6mjuub9c8whnstui, taskID: ni565d7ds0bo891mrg38246ew
+2016-12-22 01:29:44.208 [Manager  Info  ] hostName: tor1 is a manager, neglecting calculating manager's score, nodeID: 1oxvor2ftq8ggscrw8l0xet55, ip: 192.168.10.10
+2016-12-22 01:29:52.398 [score    print ] hostName: slave1-3, score: 200.95566926618227, cpuScore: 175.58099160925238, memScore: 25.3746776569299, nodeID: yporuk0j42460j4u1gvdtl5i8, ip: 192.168.10.13
+2016-12-22 01:29:52.455 [score    print ] hostName: slave1-1, score: 199.36106469355448, cpuScore: 185.35185549448468, memScore: 14.009209199069794, nodeID: s7qm3i6feydqtjhthf3zbl4my, ip: 192.168.10.11
+2016-12-22 01:29:54.188 [score    print ] hostName: slave1-2, score: 185.13310574951078, cpuScore: 147.5315492176057, memScore: 37.6015565319051, nodeID: icp8je11sez2ba1gmv6grunl9, ip: 192.168.10.12
+2016-12-22 01:29:54.201 [schedule finish] serviceId: vemqv3o2l6mjuub9c8whnstui, taskID: ni565d7ds0bo891mrg38246ew
+2016-12-22 01:30:30.443 [service  come  ] serviceId: 6khdn9ympjxf7ew8mr2bg2ykr, taskID: wswk2x09ga25lj6cq1jm3ajlk
+2016-12-22 01:30:30.466 [Manager  Info  ] hostName: tor1 is a manager, neglecting calculating manager's score, nodeID: 1oxvor2ftq8ggscrw8l0xet55, ip: 192.168.10.10
+2016-12-22 01:30:35.907 [score    print ] hostName: slave1-1, score: 201.77658543282732, cpuScore: 187.76737623375752, memScore: 14.009209199069794, nodeID: s7qm3i6feydqtjhthf3zbl4my, ip: 192.168.10.11
+2016-12-22 01:30:38.113 [score    print ] hostName: slave1-3, score: 209.19863856328578, cpuScore: 183.82142858763825, memScore: 25.377209975647535, nodeID: yporuk0j42460j4u1gvdtl5i8, ip: 192.168.10.13
+2016-12-22 01:30:42.186 [score    print ] hostName: slave1-2, score: 206.26652339560448, cpuScore: 164.04643957585492, memScore: 42.220083819749554, nodeID: icp8je11sez2ba1gmv6grunl9, ip: 192.168.10.12
+2016-12-22 01:30:42.199 [schedule finish] serviceId: 6khdn9ympjxf7ew8mr2bg2ykr, taskID: wswk2x09ga25lj6cq1jm3ajlk
+2016-12-22 01:31:26.186 [service  come  ] serviceId: eanthk265hkroxmw2vkun9ijo, taskID: yvxrjbwluyt5vphlcrq8xi5ry
+2016-12-22 01:31:26.210 [Manager  Info  ] hostName: tor1 is a manager, neglecting calculating manager's score, nodeID: 1oxvor2ftq8ggscrw8l0xet55, ip: 192.168.10.10
+2016-12-22 01:31:33.919 [score    print ] hostName: slave1-1, score: 239.94096984483767, cpuScore: 221.281579373953, memScore: 18.659390470884667, nodeID: s7qm3i6feydqtjhthf3zbl4my, ip: 192.168.10.11
+2016-12-22 01:31:34.121 [score    print ] hostName: slave1-3, score: 204.24460278229535, cpuScore: 178.8530430005812, memScore: 25.39155978171413, nodeID: yporuk0j42460j4u1gvdtl5i8, ip: 192.168.10.13
+2016-12-22 01:31:38.207 [score    print ] hostName: slave1-2, score: 208.33643102330893, cpuScore: 166.10621792868884, memScore: 42.23021309462009, nodeID: icp8je11sez2ba1gmv6grunl9, ip: 192.168.10.12
+2016-12-22 01:31:38.220 [schedule finish] serviceId: eanthk265hkroxmw2vkun9ijo, taskID: yvxrjbwluyt5vphlcrq8xi5ry
+2016-12-22 01:32:12.731 [service  come  ] serviceId: ht46jlpz6a9n2k2canp4a34me, taskID: cqu3o3aebrx4fyrfye7vr4yjz
+2016-12-22 01:32:12.753 [Manager  Info  ] hostName: tor1 is a manager, neglecting calculating manager's score, nodeID: 1oxvor2ftq8ggscrw8l0xet55, ip: 192.168.10.10
+2016-12-22 01:32:19.955 [score    print ] hostName: slave1-1, score: 235.57902122066778, cpuScore: 216.93862314016536, memScore: 18.64039808050241, nodeID: s7qm3i6feydqtjhthf3zbl4my, ip: 192.168.10.11
+2016-12-22 01:32:22.114 [score    print ] hostName: slave1-3, score: 209.1190994557729, cpuScore: 181.35475703563588, memScore: 27.764342420137, nodeID: yporuk0j42460j4u1gvdtl5i8, ip: 192.168.10.13
+2016-12-22 01:32:24.193 [score    print ] hostName: slave1-2, score: 213.3583369653829, cpuScore: 171.126857711404, memScore: 42.231479253978904, nodeID: icp8je11sez2ba1gmv6grunl9, ip: 192.168.10.12
+2016-12-22 01:32:24.206 [schedule finish] serviceId: ht46jlpz6a9n2k2canp4a34me, taskID: cqu3o3aebrx4fyrfye7vr4yjz
+2016-12-22 01:33:08.026 [service  come  ] serviceId: lqx5uobq6v20tneqro6gsnb6p, taskID: p1fmu2o7i4jkrmklaa849xfkt
+2016-12-22 01:33:08.048 [Manager  Info  ] hostName: tor1 is a manager, neglecting calculating manager's score, nodeID: 1oxvor2ftq8ggscrw8l0xet55, ip: 192.168.10.10
+2016-12-22 01:33:16.205 [score    print ] hostName: slave1-1, score: 237.4758516392612, cpuScore: 218.81561706213733, memScore: 18.660234577123877, nodeID: s7qm3i6feydqtjhthf3zbl4my, ip: 192.168.10.11
+2016-12-22 01:33:19.165 [score    print ] hostName: slave1-3, score: 311.88176956641445, cpuScore: 276.56352041157584, memScore: 35.318249154838625, nodeID: yporuk0j42460j4u1gvdtl5i8, ip: 192.168.10.13
+2016-12-22 01:33:19.184 [score    print ] hostName: slave1-2, score: 207.62131123056304, cpuScore: 165.37843654235476, memScore: 42.24287468820826, nodeID: icp8je11sez2ba1gmv6grunl9, ip: 192.168.10.12
+2016-12-22 01:33:19.198 [schedule finish] serviceId: lqx5uobq6v20tneqro6gsnb6p, taskID: p1fmu2o7i4jkrmklaa849xfkt
+2016-12-22 01:33:55.078 [service  come  ] serviceId: lind32y10t55gzd9xoze9vpt2, taskID: 4nnigfbwtcysw4sfiy7thuq66
+2016-12-22 01:33:55.101 [Manager  Info  ] hostName: tor1 is a manager, neglecting calculating manager's score, nodeID: 1oxvor2ftq8ggscrw8l0xet55, ip: 192.168.10.10
+2016-12-22 01:34:02.918 [score    print ] hostName: slave1-1, score: 231.35696412874287, cpuScore: 212.696729551619, memScore: 18.660234577123877, nodeID: s7qm3i6feydqtjhthf3zbl4my, ip: 192.168.10.11
+2016-12-22 01:34:07.125 [score    print ] hostName: slave1-3, score: 309.7531270959967, cpuScore: 274.4281250912444, memScore: 35.32500200475232, nodeID: yporuk0j42460j4u1gvdtl5i8, ip: 192.168.10.13
+2016-12-22 01:34:09.200 [score    print ] hostName: slave1-2, score: 229.80953740642354, cpuScore: 182.928720986869, memScore: 46.88081641955456, nodeID: icp8je11sez2ba1gmv6grunl9, ip: 192.168.10.12
+2016-12-22 01:34:09.212 [schedule finish] serviceId: lind32y10t55gzd9xoze9vpt2, taskID: 4nnigfbwtcysw4sfiy7thuq66
+2016-12-22 01:34:42.629 [service  come  ] serviceId: pscmqqd1h31xwgkoo89ffjgme, taskID: vj6a9f9z4sgdkhjaohpbjyw0z
+2016-12-22 01:34:42.652 [Manager  Info  ] hostName: tor1 is a manager, neglecting calculating manager's score, nodeID: 1oxvor2ftq8ggscrw8l0xet55, ip: 192.168.10.10
+2016-12-22 01:34:49.942 [score    print ] hostName: slave1-1, score: 235.14734993547742, cpuScore: 216.48711535835355, memScore: 18.660234577123877, nodeID: s7qm3i6feydqtjhthf3zbl4my, ip: 192.168.10.11
+2016-12-22 01:34:54.255 [score    print ] hostName: slave1-3, score: 306.5612389513296, cpuScore: 271.23623694657726, memScore: 35.32500200475232, nodeID: yporuk0j42460j4u1gvdtl5i8, ip: 192.168.10.13
+2016-12-22 01:34:58.231 [score    print ] hostName: slave1-2, score: 272.30999023377177, cpuScore: 220.79334234846894, memScore: 51.516647885302845, nodeID: icp8je11sez2ba1gmv6grunl9, ip: 192.168.10.12
+2016-12-22 01:34:58.243 [schedule finish] serviceId: pscmqqd1h31xwgkoo89ffjgme, taskID: vj6a9f9z4sgdkhjaohpbjyw0z
+2016-12-22 01:35:37.882 [service  come  ] serviceId: 1nus4kzzqy5wpl6okt76w8he4, taskID: hygig1lwr7d4lohghr1ywt94y
+2016-12-22 01:35:37.905 [Manager  Info  ] hostName: tor1 is a manager, neglecting calculating manager's score, nodeID: 1oxvor2ftq8ggscrw8l0xet55, ip: 192.168.10.10
+2016-12-22 01:35:48.322 [score    print ] hostName: slave1-1, score: 316.9070995552237, cpuScore: 290.70097725267067, memScore: 26.206122302553, nodeID: s7qm3i6feydqtjhthf3zbl4my, ip: 192.168.10.11
+2016-12-22 01:35:49.121 [score    print ] hostName: slave1-3, score: 308.4887282120792, cpuScore: 273.1637262073269, memScore: 35.32500200475232, nodeID: yporuk0j42460j4u1gvdtl5i8, ip: 192.168.10.13
+2016-12-22 01:35:53.203 [score    print ] hostName: slave1-2, score: 279.665784758993, cpuScore: 228.15504561736464, memScore: 51.51073914162837, nodeID: icp8je11sez2ba1gmv6grunl9, ip: 192.168.10.12
+2016-12-22 01:35:53.216 [schedule finish] serviceId: 1nus4kzzqy5wpl6okt76w8he4, taskID: hygig1lwr7d4lohghr1ywt94y
