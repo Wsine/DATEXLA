@@ -1,6 +1,5 @@
 import sys,re
 import matplotlib.pyplot as plt
-import time,datetime
 
 markSty = ['.','o','+','*']
 lineSty = ['-','--','-.',':']
@@ -12,6 +11,7 @@ def parseTime(s):
 	t = re.split(':',s[11:-1]) 
 	sec = float(t[0])*3600 + float(t[1])*60 + float(t[-1])
 	return sec
+	
 def readFile(fileName):
 	serviceDict = {}
 	with open(fileName) as logFile:
@@ -39,7 +39,7 @@ def plotPerLog(ty,log):
 	plt.ylabel(ty + ' usage(%)')
 	#plt.ylim(0,400)
 	for (idx,task) in enumerate(log.keys()):
-		plt.plot(log[task]["time"][1:],log[task][ty][1:],colorSty[idx]+markSty[0],label=task)
+		plt.plot(log[task]["time"][1:],log[task][ty][1:],colorSty[idx]+lineSty[0],label=task)
 	plt.legend()
 
 def plotIOLog(ty,log):
