@@ -12,6 +12,7 @@ from multiprocessing import Pool
 from pymongo import MongoClient
 
 PORT = 4243
+INDEX = 5
 DB_CONFIG = {
 	"host" : "localhost",
 	"port" : 27017,
@@ -65,27 +66,30 @@ if __name__ == "__main__":
 	db = client.datexla
 	collection = db.cluster
 	
-	with open('cluster_score.log', 'w') as log_file:
-		while True:
-			# monitor the cluster
-			pool = Pool(len(node_map))
-			result_list = []
-			for ip in node_map:
-				result_list.append(pool.apply_async(probe_node, [ip]))
-			pool.close()
-			pool.join()
-			# save data and write log
-			insert_values = []
-			for res in result_list:
-				r = res.get()
-				if "score" not in r:
-					continue
-				# save to database
-				insert_values.append(r)
-				# save to log file
-				log = "%s [score print] hostName: %s, score: %f, cpuScore: %f, memScore: %f, nodeID: %s, ip: %s\n" % (r["calcTime"], r["hostName"], r["score"], r["cpuScore"], r["memScore"], r["nodeID"], r["ip"])
-				log_file.write(log)
-				print(log)
-			# insert into database
-			collection.insert(insert_values)
-			time.sleep(7)
+	index = 0
+	try:
+		with open('cluster_score.log', 'w') as log_file:
+			while True:
+				# monitor the cluster
+				pool = Pool(len(node_map))
+				result_list = []
+				pool.apply_async(probe_node, node_map.keys(), callback=result_list.append)
+				pool.close()
+				pool.join()
+				# save data and write log
+				for r in result_list:
+					if "score" not in r:
+						continue
+					# save to database
+					r["index"] = index
+					collection.update({"hostName":r["hostName"], "index":index}, r, upsert=True)
+					# save to log file
+					log = "%s [score print] hostName: %s, score: %f, cpuScore: %f, memScore: %f, nodeID: %s, ip: %s\n" % (r["calcTime"], r["hostName"], r["score"], r["cpuScore"], r["memScore"], r["nodeID"], r["ip"])
+					log_file.write(log)
+					print(log)
+				index = 0 if index + 1 == INDEX else index + 1
+				time.sleep(7000)
+	except KeyboardInterrupt:
+		log_file.close()
+		client.close()
+		print("Close the mongodb connection")
