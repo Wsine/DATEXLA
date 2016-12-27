@@ -89,7 +89,7 @@ if __name__ == "__main__":
 					print(log)
 				index = 0 if index + 1 == INDEX else index + 1
 				time.sleep(7000)
-	except KeyboardInterrupt:
+	finally:
 		log_file.close()
 		client.close()
 		print("Close the mongodb connection")

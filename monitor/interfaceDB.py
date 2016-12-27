@@ -2,32 +2,33 @@
 # -*- coding: UTF-8 -*-
 
 from flask import Flask, json
-from flaskext.mysql import MySQL
-import itertools
+from pymongo import MongoClient
 
-mysql = MySQL()
 app = Flask(__name__)
-app.config['MYSQL_DATABASE_USER'] = 'root'
-app.config['MYSQL_DATABASE_PASSWORD'] = 'crash'
-app.config['MYSQL_DATABASE_DB'] = 'datexla_dcn'
-app.config['MYSQL_DATABASE_HOST'] = 'localhost'
-mysql.init_app(app)
-
-def dictfetchall(cursor):
-	"""Returns all rows from a cursor as a list of dicts"""
-	desc = cursor.description
-	return [dict(itertools.izip([col[0] for col in desc], row)) for row in cursor.fetchall()]
+DB_CONFIG = {
+	"host" : "localhost",
+	"port" : 27017,
+	"user" : "datexla",
+	"pwd"  : "datexla"
+}
+client = MongoClient(DB_CONFIG["host"], DB_CONFIG["port"])
+db = client.datexla
+collection = db.cluster
 
 @app.route('/')
 def home():
-	return 'Welcome'
+	return 'Welcome to DATEXLA monitor\n'
 
-@app.route('/docker/stats')
-def api_stats():
-	cursor = mysql.connect().cursor()
-	cursor.execute("SELECT * FROM docker_stats")
-	results = dictfetchall(cursor)
-	return json.dumps(results)
+@app.route('/cluster/<hostName>/score')
+def host_score(hostName):
+	docs = collection.find({"hostName":hostName}, {"score":1})
+	scores = map(lambda x : x["score"], docs)
+	result = sum(scores) / len(scores)
+	return json.dumps(result)
 
 if __name__ == '__main__':
-	app.run()
+	try:
+		app.run()
+	finally:
+		client.close()
+		print("Close the mongodb connection")
