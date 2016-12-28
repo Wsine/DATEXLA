@@ -70,10 +70,10 @@ if __name__ == "__main__":
 	try:
 		with open('cluster_score.log', 'w') as log_file:
 			while True:
+				result_list = []
 				# monitor the cluster
 				pool = Pool(len(node_map))
-				result_list = []
-				pool.apply_async(probe_node, node_map.keys(), callback=result_list.append)
+				pool.map_async(probe_node, node_map.keys(), callback=result_list.append)
 				pool.close()
 				pool.join()
 				# save data and write log
@@ -88,7 +88,7 @@ if __name__ == "__main__":
 					log_file.write(log)
 					print(log)
 				index = 0 if index + 1 == INDEX else index + 1
-				time.sleep(7000)
+				#time.sleep(7000)
 	finally:
 		log_file.close()
 		client.close()

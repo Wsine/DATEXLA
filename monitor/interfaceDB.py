@@ -23,8 +23,10 @@ def home():
 def host_score(hostName):
 	docs = collection.find({"hostName":hostName}, {"score":1})
 	scores = map(lambda x : x["score"], docs)
-	result = sum(scores) / len(scores)
-	return json.dumps(result)
+	if scores:
+		return json.dumps(sum(scores) / len(scores))
+	else:
+		return json.dumps(0.0)
 
 if __name__ == '__main__':
 	try:
