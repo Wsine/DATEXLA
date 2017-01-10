@@ -2,7 +2,7 @@
 
 The goal of this paper is to build a low-cost, easy-to-use, fully functional small-scale cloud computing experimental data center based on Raspberry pie, to design and implement a reasonable architecture, and to monitor system resources and visualize system logs. The work can be scaled to achieve a large-scale, low-power, efficient data center, Datexla(Low Cost **Da**ta Cen**te**r E**x**perimental P**la**tform).
 
-![Cluster](https://github.com/Wsine/DATEXLA/blob/master/pic/Cluster.jpg)
+![Cluster](https://github.com/Wsine/DATEXLA/blob/master/pic/Cluster.jpg?raw=true)
 
 ## Preparation
 
