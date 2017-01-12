@@ -11,4 +11,4 @@ ENV PATH $PATH:$SPARK_HOME/bin:$SPARK_HOME/sbin
 ENV HADOOP_ROOT_LOGGER INFO,console
 
 EXPOSE 4040 8080 50070 50075 50090 50105 50030 50060 60010 60030
-ENTRYPOINT ["/bin/bash","-c","service ssh start && sleep 500000000"]
+ENTRYPOINT ["/bin/bash","-c","trap '' SIGTERM && service ssh start && sleep 500000000"]
